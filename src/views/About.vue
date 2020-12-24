@@ -10,16 +10,21 @@
     </button>
     <!-- <button>two</button> -->
     <keep-alive include="One">
-      <component
+      <!-- <component
         :is="currentView"
         :name="name"
         :age="age"
-        @result="result"
-      ></component>
-      <!-- <One v-if="currentView == 'One'"></One>
-        <Two v-if="currentView == 'Two'"></Two> -->
+        @result="result"                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  
+      ></component> -->
+      <One @click.native="Onezj" v-if="currentView == 'One'" :name="name"></One>
+      <Two v-if="currentView == 'Two'" :person.sync="person"></Two>
     </keep-alive>
     <button @click="showAlert">alert</button>
+    <div v-if="animal.show">set{{animal.show}}</div>
+    <button @click="changeSet">changeSet</button>
+    <div v-if="cats.length">
+      <span @click="changeName(item)" v-for="(item,index) in cats" :key="index">{{item.name}}</span>
+    </div>
     <!-- <One /> -->
   </div>
 </template>
@@ -44,10 +49,28 @@ export default {
       currentView: "One",
       name: "ddddd",
       age: 89,
+      person:{
+        age:18,
+        name:'xx'
+      },
+      animal:{
+        type:'cat',
+      },
+      cats:[]
     };
   },
   created(){
     console.log(this.meMixin)//我是mixin
+    // this.animal.show = 'ff';
+    this.$set(this.animal,'show','fff')
+    this.cats.push({name:'xiaohui1'})
+    this.cats[1] = {name:'xiaohui2'}
+    console.log(this.$options.data())
+    // this.$set(this.cats,0,{name:'xiaohui1'})
+    // this.$set(this.cats,1,{name:'xiaohui2'})
+  },
+  mounted(){
+    console.log(this.$options.el)
   },
   methods: {
     changeView(e) {
@@ -59,6 +82,16 @@ export default {
     showAlert() {
       extendComponents(Alert)
     },
+    changeSet(){
+      this.animal.show = 'change',
+      this.age = 10
+    },
+    changeName(item){
+      item.name = 'shaexiao'
+    },
+    Onezj(){
+      console.log('我是One组件')
+    }
   },
 };
 </script>
