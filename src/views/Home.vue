@@ -24,7 +24,10 @@
         </div>
       </template>
     </Homec>
-
+    <router-link to="/home/foobar/123">tofoobar</router-link> <br />
+    <router-link to="/home/foo">tofoo</router-link>
+    <router-view/>
+    <router-view name="other"/>
   </div>
 </template>
 
