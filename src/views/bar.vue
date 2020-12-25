@@ -8,8 +8,8 @@ export default {
         id:String
     },
     created(){
-        console.log(this.$route,'ggg')
-        console.log(this.id,'ididididffffff')
+        // console.log(this.$route,'ggg')
+        // console.log(this.id,'ididididffffff')
     }
 }
 </script>
