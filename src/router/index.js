@@ -14,6 +14,9 @@ const routes = [{
       default: Home,
       // about:About
     },
+    meta: {
+      roles: ['admin']
+    },
     children: [{
         path: '/home/foobar/:id',
         components: {
@@ -23,31 +26,25 @@ const routes = [{
         props: true
       },
       {
-        path: '/home/foo/:id',
+        path: '/home/foo',
         components: {
           default: Foo
-        },
-        beforeEnter: (to, from, next) => {
-          // ...
-          console.log("组件路由守卫");
-          next();
-        },
-        beforeRouteUpdate(to, from, next) {
-          console.log('update /home/foo',444444)
-          next()
         },
         // redirect: to => {
         //   // console.log(to,'dddddddd')
         //   return '/home/bar'
         // }
       },
-      {
-        path: '/home/bar',
-        components: {
-          default: Bar
-        }
-      }
     ]
+  },
+  {
+    path: '/bar',
+    components: {
+      default: Bar
+    },
+    meta: {
+      roles: ['admin', 'user']
+    }
   },
   {
     path: '/about',
@@ -61,15 +58,26 @@ const routes = [{
   }
 ]
 
+const role = 'user'
+
 const router = new VueRouter({
   mode: 'history',
   base: process.env.BASE_URL,
   routes
 })
-// router.beforeEach((to, from, next) => {
-//   console.log(from, to, '路由全局守卫')
-//   next()
-// })
+
+
+router.beforeEach((to, from, next) => {
+  // console.log(from, to, '路由全局守卫')
+  console.log(to)
+
+  if(to.meta.roles){
+    to.meta.roles.includes(role) ? next() : next({path:'/home/foo'})
+  }else{
+    next()
+  }
+  
+})
 // router.beforeResolve((to, from, next) => {
 //   console.log(from, to, '路由解析守卫')
 //   next()
