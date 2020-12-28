@@ -67,17 +67,17 @@ const router = new VueRouter({
 })
 
 
-router.beforeEach((to, from, next) => {
-  // console.log(from, to, '路由全局守卫')
-  console.log(to)
+// router.beforeEach((to, from, next) => {
+//   // console.log(from, to, '路由全局守卫')
+//   // console.log(to)
 
-  if(to.meta.roles){
-    to.meta.roles.includes(role) ? next() : next({path:'/home/foo'})
-  }else{
-    next()
-  }
+//   if(to.meta.roles){
+//     to.meta.roles.includes(role) ? next() : next({path:'/home/foo'})
+//   }else{
+//     next()
+//   }
   
-})
+// })
 // router.beforeResolve((to, from, next) => {
 //   console.log(from, to, '路由解析守卫')
 //   next()

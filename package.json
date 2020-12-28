@@ -5,9 +5,10 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "mock":"node src/mockService/mockService.js"
+    "mock": "node src/mockService/mockService.js"
   },
   "dependencies": {
+    "axios": "^0.21.1",
     "express": "^4.17.1",
     "mockjs": "^1.1.0",
     "vue": "^2.6.11",

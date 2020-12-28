@@ -16,19 +16,19 @@ export default {
   },
   beforeEnter: (to, from, next) => {
     // ...
-    console.log(from, to, "组件路由守卫");
+    // console.log(from, to, "组件路由守卫");
     next();
   },
   beforeRouteUpdate(to, from, next){
-      console.log('update /home/foo')
+      // console.log('update /home/foo')
       next()
   },
   beforeRouteLeave(to, from, next) {
-    console.log("leave /home/foo");
+    // console.log("leave /home/foo");
     next();
   },
   created() {
-    console.log(this.$route);
+    // console.log(this.$route);
     // console.log(this.id, "idididid");
   },
 };

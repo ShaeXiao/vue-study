@@ -6,15 +6,15 @@
 export default {
   beforeEnter: (to, from, next) => {
     // ...
-    console.log(from, to, "组件路由守卫");
+    // console.log(from, to, "组件路由守卫");
     next();
   },
   beforeRouteLeave(to, from, next) {
-    console.log("leave /home/foo");
+    // console.log("leave /home/foo");
     next();
   },
   created(){
-      console.log('testroute')
+      // console.log('testroute')
   }
 };
 </script>
