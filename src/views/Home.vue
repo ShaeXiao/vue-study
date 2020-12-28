@@ -29,16 +29,24 @@
     <router-link to="/bar">tobar</router-link>
     <router-view/>
     <router-view name="other"/>
+    <div>----------------------------- 以下是vuex -------------------------------</div>
+    <Vuextest></Vuextest>
+    <div @click="changeCount">点击改变state.count{{count}}</div>
+    <div>state.name{{name}}</div>
+    <div v-for="(todo,index) in $store.getters.doneTodos" :key="index">{{todo.id + todo.text}}</div>
+    
   </div>
 </template>
 
 <script>
 import Homec from "@/components/homec.vue";
+import Vuextest from '@/components/vuextest.vue'
+import { mapState } from 'vuex'
 
 export default {
   name: "Home",
   components: {
-    Homec,
+    Homec,Vuextest
   },
   data() {
     return {
@@ -54,5 +62,20 @@ export default {
       ],
     };
   },
+  // computed:{
+  //   count(){
+  //     return this.$store.state.count
+  //   },
+  //   name(){
+  //     return this.$store.state.name
+  //   }
+  // },
+  computed:mapState(['count','name']),
+  methods:{
+    changeCount(){
+      // this.$store.commit('increment')
+      this.$store.dispatch('increment')
+    }
+  }
 };
 </script>
