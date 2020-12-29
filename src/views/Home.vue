@@ -70,26 +70,6 @@ export default {
     };
   },
   mounted() {
-    // this.$request({
-    //   url:'/about',
-    //   method:'get',
-    //   params:{
-    //     name:'xx1'
-    //   }
-    // })
-    // this.$request({
-    //   url:'/testpost',
-    //   method:'post',
-    //   data:{
-    //     name:'xx2'
-    //   },
-    //   isFormdata:true
-    // })
-
-    var data = new FormData()
-
-    data.set('age', 18)
-
     this.$request({
       url: '/user',
       method: 'post',
@@ -97,9 +77,6 @@ export default {
         name:'xxxx'
       },
       isFormdata:true
-      // headers: {
-      //   'Content-Type': 'multipart/form-data'
-      // }
     })
   },
   // computed:{
