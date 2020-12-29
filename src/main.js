@@ -5,7 +5,7 @@ import store from './store'
 import request from './utils/request'
 
 Vue.config.productionTip = false
-Vue.prototype.request = request
+Vue.prototype.$request = request
 
 new Vue({
   router,

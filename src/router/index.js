@@ -14,9 +14,9 @@ const routes = [{
       default: Home,
       // about:About
     },
-    meta: {
-      roles: ['admin']
-    },
+    // meta: {
+    //   roles: ['admin']
+    // },
     children: [{
         path: '/home/foobar/:id',
         components: {
@@ -42,9 +42,9 @@ const routes = [{
     components: {
       default: Bar
     },
-    meta: {
-      roles: ['admin', 'user']
-    }
+    // meta: {
+    //   roles: ['admin', 'user']
+    // }
   },
   {
     path: '/about',
@@ -62,7 +62,7 @@ const role = 'user'
 
 const router = new VueRouter({
   mode: 'history',
-  base: process.env.BASE_URL,
+  // base: process.env.BASE_URL,
   routes
 })
 

@@ -20,7 +20,7 @@ let instance = axios.create({
 
 instance.interceptors.request.use(
     config => {
-        console.log(config)
+        // console.log(config,'请求拦截器')
         return config
     },
     error => {
@@ -30,21 +30,26 @@ instance.interceptors.request.use(
 
 instance.interceptors.response.use(
     response => {
-        console.log(response,'响应拦截器')
+        // console.log(response,'响应拦截器')
         if (response.status === 200) {
             return Promise.resolve(response);
         } else {
             return Promise.reject(response);
         }
-
     }
 )
 
 function request(data) {
-    //请求配置项
-    let options = {
-
+    console.log(data)
+    //处理form-data
+    if(data.isFormdata) {
+        data.data = Formdata(data.data);
+        data.headers = {
+            'Content-Type': 'multipart/form-data;charset=UTF-8'
+        }
     }
+    //请求配置项
+    let options = {}
     options = Object.assign(options, data)
     return new Promise((resolve, reject)=>{
         instance(options).then(res => {
@@ -55,6 +60,15 @@ function request(data) {
             }
         })
     })
+}
+
+function Formdata(data){
+    let formdata = new FormData();
+    const keys = Object.keys(data);
+    for (let prop of keys){
+        formdata.append(prop,data[prop])
+    }
+    return formdata
 }
 
 // class MyAxios {

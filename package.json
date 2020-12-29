@@ -9,7 +9,13 @@
   },
   "dependencies": {
     "axios": "^0.21.1",
+    "body-parser": "^1.19.0",
     "express": "^4.17.1",
+    "koa": "^2.13.0",
+    "koa-body": "^4.2.0",
+    "koa-bodyparser": "^4.3.0",
+    "koa-router": "^10.0.0",
+    "koa2-cors": "^2.0.6",
     "mockjs": "^1.1.0",
     "vue": "^2.6.11",
     "vue-router": "^3.2.0",
