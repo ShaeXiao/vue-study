@@ -42,6 +42,12 @@ router.post('/user', async (ctx) => {
   }
 })
 
+router.get('/bar', async ctx => {
+    ctx.body = {
+        name: 'xxxxxx'
+    }
+})
+
 router.put('/user', async (ctx) => {
     // console.log(ctx.request.query)
     // console.log(ctx.request.querystring)

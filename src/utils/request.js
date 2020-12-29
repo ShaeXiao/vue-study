@@ -20,7 +20,7 @@ let instance = axios.create({
 
 instance.interceptors.request.use(
     config => {
-        // console.log(config,'请求拦截器')
+        console.log(config,'请求拦截器')
         return config
     },
     error => {
@@ -36,11 +36,13 @@ instance.interceptors.response.use(
         } else {
             return Promise.reject(response);
         }
+    },
+    error => {
+        return Promise.error(error);
     }
 )
 
 function request(data) {
-    console.log(data)
     //处理form-data
     if(data.isFormdata) {
         data.data = Formdata(data.data);
