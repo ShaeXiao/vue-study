@@ -33,7 +33,7 @@ router.get('/', async (ctx) => {
   }
 })
 
-router.post('/user', async (ctx) => {
+router.post('/api/user', async (ctx) => {
   // console.log(ctx.request.query)
   // console.log(ctx.request.querystring)
   console.log(ctx.request.body)

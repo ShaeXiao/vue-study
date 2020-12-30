@@ -14,7 +14,7 @@ console.log(process.env.NODE_ENV)
 let instance = axios.create({
     timeout:10000,
     headers: {'X-Requested-With': 'XMLHttpRequest'},
-    baseURL:process.env.NODE_ENV == 'development' ? '/':''
+    baseURL:process.env.NODE_ENV == 'development' ? '/api':''
 })
 
 
@@ -37,9 +37,9 @@ instance.interceptors.response.use(
             return Promise.reject(response);
         }
     },
-    error => {
-        return Promise.error(error);
-    }
+    // error => {
+    //     return Promise.error(error);
+    // }
 )
 
 function request(data) {
